@@ -3,7 +3,7 @@ import os
 import re
 import subprocess
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
 import webbrowser
 
 """
@@ -30,18 +30,29 @@ class SpotlightWindow(Gtk.Window):
             self.set_app_paintable(True)
             self.override_background_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(0, 0, 0, 0))
 
-        # Create widgets
-        self.grid = Gtk.Grid()
-        self.search_entry = Gtk.Entry()
-        self.treeview = Gtk.TreeView()
-        self.grid.attach(self.search_entry, 0, 1, 1, 1)
+        # Creating Search Icon widget
+        svg_file = Gio.File.new_for_path("./assets/search.svg")
+        svg_pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+            svg_file.get_path(), 48, 48, False)
+        
+        self.search_icon = Gtk.Image.new_from_pixbuf(svg_pixbuf)
 
-        # Create a Gtk.Entry widget
+        # Creating Search Entry
+        self.search_entry = Gtk.Entry()
         self.search_entry.set_placeholder_text("Search...")
         self.search_entry.connect("activate", self.on_search_activate)
         self.search_entry.set_activates_default(True)
         self.search_entry.set_size_request(700, 80)
-        
+
+        self.treeview = Gtk.TreeView()
+
+        # Placing Widgets inside grid
+        self.grid = Gtk.Grid()
+        self.grid.attach(self.search_icon, 0, 0, 1, 1)
+        self.grid.attach(self.search_entry, 1, 0, 2, 1)
+
+        self.grid.attach(self.treeview, 0, 1, 3, 1)
+
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(b"""
             entry {
