@@ -12,6 +12,20 @@ files = [
 ]
 
 [[package]]
+name = "dbus-python"
+version = "1.3.2"
+description = "Python bindings for libdbus"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "dbus-python-1.3.2.tar.gz", hash = "sha256:ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8"},
+]
+
+[package.extras]
+doc = ["sphinx", "sphinx_rtd_theme"]
+test = ["tap.py"]
+
+[[package]]
 name = "macholib"
 version = "1.16.3"
 description = "Mach-O header analysis and editing"
@@ -69,6 +83,17 @@ files = [
     {file = "pycairo-1.26.0-cp39-cp39-win_amd64.whl", hash = "sha256:3e4e18ea03122e60abe3eb611e2849859cc950083ff85d8369328eadf3df63f5"},
     {file = "pycairo-1.26.0-cp39-cp39-win_arm64.whl", hash = "sha256:a8f3b567ba2ad55624a809823ccf75aff8d768c20216cb5888365f6fc695c1d2"},
     {file = "pycairo-1.26.0.tar.gz", hash = "sha256:2dddd0a874fbddb21e14acd9b955881ee1dc6e63b9c549a192d613a907f9cbeb"},
+]
+
+[[package]]
+name = "pydbus"
+version = "0.6.0"
+description = "Pythonic DBus library"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pydbus-0.6.0-py2.py3-none-any.whl", hash = "sha256:66b80106352a718d80d6c681dc2a82588048e30b75aab933e4020eb0660bf85e"},
+    {file = "pydbus-0.6.0.tar.gz", hash = "sha256:4207162eff54223822c185da06c1ba8a34137a9602f3da5a528eedf3f78d0f2c"},
 ]
 
 [[package]]
@@ -167,4 +192,4 @@ testing-integration = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "jar
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "a7ddf4704dbc0269a7bd8fb72dec7a0117e8a58efddc1ce0da2c7e0f4abc523e"
+content-hash = "f9f2420c9e525be5a0e61214be1cf6a04ad27b10d2df0e9328d4936690813ed4"
